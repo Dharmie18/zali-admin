@@ -1,0 +1,63 @@
+﻿@import "tailwindcss";
+
+:root {
+  --primary: #6333F5;
+  --primary-hover: #764DF5;
+  --primary-dark: #4D23CC;
+  --bg-dark: #120422;
+  --bg-main: #1A0733;
+  --bg-card: #270949;
+  --bg-card-alt: #1F0A38;
+  --text-main: #FFFFFF;
+  --text-secondary: #D4C2F1;
+  --text-muted: #A390C5;
+  --crypto-green: #10B981;
+  --danger: #EF4444;
+  --warning: #F59E0B;
+}
+
+body {
+  background-color: var(--bg-dark);
+  background-image: 
+    radial-gradient(circle at 12% 18%, rgba(99, 51, 245, 0.22) 0%, transparent 45%),
+    radial-gradient(circle at 88% 82%, rgba(77, 35, 204, 0.16) 0%, transparent 40%);
+  background-attachment: fixed;
+  color: var(--text-main);
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #150524;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #361563;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6333F5;
+}

@@ -1,0 +1,13 @@
+﻿# Next.js
+/.next/
+/out/
+
+# Dependencies
+/node_modules/
+
+# Environment
+.env*.local
+
+# Typescript
+*.tsbuildinfo
+next-env.d.ts
