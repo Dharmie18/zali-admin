@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React from 'react';
 import Image from 'next/image';
@@ -15,11 +15,11 @@ export function Navbar({ user, onLogout, systemStatus }: NavbarProps) {
   const initial = (user?.first_name || user?.email || 'A').charAt(0).toUpperCase();
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-white/10 bg-[#1A0733]/85 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 w-full border-b border-[#ECEEF2] bg-white/90 backdrop-blur-xl shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand */}
         <div className="flex items-center gap-4">
-          <div className="relative w-10 h-10 rounded-2xl bg-gradient-to-br from-[#6333F5] to-[#764DF5] p-2 shadow-lg shadow-[#6333F5]/30 flex items-center justify-center">
+          <div className="relative w-11 h-11 rounded-2xl bg-[#340D73] p-2.5 shadow-md shadow-[#340D73]/25 flex items-center justify-center">
             <Image
               src="/zali_white.png"
               alt="Zali Logo"
@@ -30,42 +30,42 @@ export function Navbar({ user, onLogout, systemStatus }: NavbarProps) {
             />
           </div>
           <div className="flex items-center gap-2.5">
-            <span className="text-2xl font-extrabold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-white via-[#EFEBFF] to-[#D4C2F1]">
+            <span className="text-2xl font-black tracking-wider text-[#0B1C56]">
               ZALI
             </span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wider bg-[#6333F5]/20 text-[#D4C2F1] border border-[#6333F5]/30">
-              <ShieldCheck className="w-3 h-3 text-[#10B981]" />
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold tracking-wider bg-[#F0EBF9] text-[#340D73] border border-[#340D73]/20">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#37A970]" />
               ADMIN PORTAL
             </span>
           </div>
         </div>
 
         {/* User Navigation */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 sm:gap-4">
           {/* Status Chip */}
-          <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-[#D4C2F1]">
+          <div className="hidden md:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F8F9FD] border border-[#ECEEF2] text-xs font-semibold text-[#5C688E]">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10B981] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10B981]"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#37A970] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#37A970]"></span>
             </span>
             <span>{systemStatus}</span>
           </div>
 
           {/* User Profile Chip */}
-          <div className="flex items-center gap-3 pl-3 pr-4 py-1.5 rounded-full bg-white/5 border border-white/10">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#6333F5] to-[#4D23CC] text-white font-bold text-sm flex items-center justify-center shadow-md">
+          <div className="flex items-center gap-3 pl-3 pr-4 py-1.5 rounded-full bg-[#F8F9FD] border border-[#ECEEF2]">
+            <div className="w-8 h-8 rounded-full bg-[#340D73] text-white font-bold text-sm flex items-center justify-center shadow-xs">
               {initial}
             </div>
             <div className="hidden sm:block text-left">
-              <p className="text-xs font-bold text-white tracking-tight">{user?.first_name || 'Admin'} {user?.last_name || ''}</p>
-              <p className="text-[11px] text-[#A390C5] truncate max-w-[140px]">{user?.email}</p>
+              <p className="text-xs font-bold text-[#0B1C56] tracking-tight">{user?.first_name || 'Admin'} {user?.last_name || ''}</p>
+              <p className="text-[11px] text-[#5C688E] truncate max-w-[140px]">{user?.email}</p>
             </div>
           </div>
 
           {/* Logout Button */}
           <button
             onClick={onLogout}
-            className="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold text-[#A390C5] hover:text-[#EF4444] bg-white/5 hover:bg-[#EF4444]/15 border border-white/10 hover:border-[#EF4444]/30 transition-all duration-200"
+            className="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold text-[#5C688E] hover:text-[#DC5355] bg-[#F8F9FD] hover:bg-[#FEF1F1] border border-[#ECEEF2] hover:border-[#DC5355]/30 transition-all duration-200"
           >
             <LogOut className="w-4 h-4" />
             <span className="hidden sm:inline">Logout</span>

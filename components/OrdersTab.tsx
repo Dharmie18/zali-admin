@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState } from 'react';
 import Image from 'next/image';
@@ -67,24 +67,24 @@ export function OrdersTab({ orders, loading, onRefresh }: OrdersTabProps) {
   });
 
   return (
-    <div className="rounded-3xl bg-[#270949] border border-white/10 p-6 sm:p-8 shadow-xl">
+    <div className="rounded-3xl bg-white border border-[#ECEEF2] p-6 sm:p-8 shadow-xs">
       {/* Header & Controls */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
         <div>
-          <h2 className="text-xl font-extrabold text-white tracking-tight">Trade Orders Queue</h2>
-          <p className="text-xs text-[#A390C5] mt-0.5">Real-time incoming sell trades from the Zali client</p>
+          <h2 className="text-xl font-extrabold text-[#0B1C56] tracking-tight">Trade Orders Queue</h2>
+          <p className="text-xs text-[#5C688E] mt-0.5">Real-time incoming sell trades from the Zali client</p>
         </div>
 
         <div className="flex items-center gap-3 w-full sm:w-auto">
           {/* Search Input */}
           <div className="relative flex-1 sm:w-64">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#A390C5]" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#768498]" />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search order or asset..."
-              className="w-full bg-[#1A0733] border border-white/10 rounded-full pl-10 pr-4 py-2 text-xs text-white placeholder-[#7C69A2] focus:outline-none focus:border-[#764DF5]"
+              className="w-full bg-[#F8F9FD] border border-[#ECEEF2] rounded-full pl-10 pr-4 py-2 text-xs text-[#0B1C56] placeholder-[#768498] focus:outline-none focus:border-[#340D73] focus:ring-2 focus:ring-[#340D73]/15 transition-all"
             />
           </div>
 
@@ -92,19 +92,19 @@ export function OrdersTab({ orders, loading, onRefresh }: OrdersTabProps) {
           <button
             onClick={onRefresh}
             disabled={loading}
-            className="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold text-[#D4C2F1] bg-white/5 hover:bg-[#6333F5]/20 border border-white/10 hover:border-[#6333F5]/40 transition-all disabled:opacity-50"
+            className="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold text-[#340D73] bg-[#F0EBF9] hover:bg-[#340D73] hover:text-white transition-all disabled:opacity-50"
           >
-            <RotateCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin text-[#6333F5]' : ''}`} />
+            <RotateCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
             <span>Refresh</span>
           </button>
         </div>
       </div>
 
       {/* Orders Table */}
-      <div className="overflow-x-auto rounded-2xl border border-white/10">
+      <div className="overflow-x-auto rounded-2xl border border-[#ECEEF2]">
         <table className="w-full text-left text-sm">
           <thead>
-            <tr className="bg-[#1F0A38] text-[#A390C5] text-[11px] uppercase tracking-wider font-bold border-b border-white/10">
+            <tr className="bg-[#F8F9FD] text-[#5C688E] text-[11px] uppercase tracking-wider font-bold border-b border-[#ECEEF2]">
               <th className="py-4 px-5">Order ID</th>
               <th className="py-4 px-5">User</th>
               <th className="py-4 px-5">Asset</th>
@@ -115,10 +115,10 @@ export function OrdersTab({ orders, loading, onRefresh }: OrdersTabProps) {
               <th className="py-4 px-5 text-right">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-white/5">
+          <tbody className="divide-y divide-[#ECEEF2]">
             {filteredOrders.length === 0 ? (
               <tr>
-                <td colSpan={8} className="py-12 text-center text-sm text-[#A390C5]">
+                <td colSpan={8} className="py-12 text-center text-sm text-[#768498]">
                   {loading ? 'Fetching active orders...' : 'No orders found.'}
                 </td>
               </tr>
@@ -128,18 +128,18 @@ export function OrdersTab({ orders, loading, onRefresh }: OrdersTabProps) {
                 const isCompleted = order.status === 'Completed';
 
                 return (
-                  <tr key={order.order_id} className="hover:bg-white/[0.02] transition-colors">
-                    <td className="py-4 px-5 font-mono font-bold text-white text-xs">
+                  <tr key={order.order_id} className="hover:bg-[#F8F9FD]/80 transition-colors">
+                    <td className="py-4 px-5 font-mono font-bold text-[#0B1C56] text-xs">
                       {order.order_id}
                     </td>
                     <td className="py-4 px-5">
-                      <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#6333F5]/20 text-[#D4C2F1] border border-[#6333F5]/30">
+                      <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#F0EBF9] text-[#340D73] border border-[#340D73]/20">
                         User #{order.user_id}
                       </span>
                     </td>
                     <td className="py-4 px-5">
                       <div className="flex items-center gap-2.5">
-                        <div className="w-7 h-7 rounded-full bg-white/10 p-1 flex items-center justify-center shrink-0">
+                        <div className="w-7 h-7 rounded-full bg-[#F0EBF9] p-1 flex items-center justify-center shrink-0">
                           <Image
                             src={getCoinImage(order.coin_id)}
                             alt={order.coin_id}
@@ -148,30 +148,30 @@ export function OrdersTab({ orders, loading, onRefresh }: OrdersTabProps) {
                             className="object-contain"
                           />
                         </div>
-                        <span className="font-extrabold text-xs uppercase text-white tracking-wide">
+                        <span className="font-extrabold text-xs uppercase text-[#0B1C56] tracking-wide">
                           {order.coin_id}
                         </span>
                       </div>
                     </td>
-                    <td className="py-4 px-5 font-semibold text-white text-xs">
+                    <td className="py-4 px-5 font-semibold text-[#0B1C56] text-xs">
                       {order.amount_crypto}
                     </td>
-                    <td className="py-4 px-5 font-extrabold text-[#10B981] text-sm">
+                    <td className="py-4 px-5 font-extrabold text-[#37A970] text-sm">
                       ₦{Number(order.naira_value).toLocaleString('en-NG', { minimumFractionDigits: 2 })}
                     </td>
                     <td className="py-4 px-5">
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-xs text-[#A390C5] max-w-[140px] truncate" title={order.wallet_address}>
+                        <span className="font-mono text-xs text-[#5C688E] max-w-[140px] truncate" title={order.wallet_address}>
                           {order.wallet_address || 'N/A'}
                         </span>
                         {order.wallet_address && (
                           <button
                             onClick={() => handleCopy(order.wallet_address)}
-                            className="text-[#A390C5] hover:text-white p-1 rounded transition-colors"
+                            className="text-[#768498] hover:text-[#0B1C56] p-1 rounded transition-colors"
                             title="Copy Wallet Address"
                           >
                             {copiedAddress === order.wallet_address ? (
-                              <Check className="w-3.5 h-3.5 text-[#10B981]" />
+                              <Check className="w-3.5 h-3.5 text-[#37A970]" />
                             ) : (
                               <Copy className="w-3.5 h-3.5" />
                             )}
@@ -183,10 +183,10 @@ export function OrdersTab({ orders, loading, onRefresh }: OrdersTabProps) {
                       <span
                         className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold tracking-wide ${
                           isCompleted
-                            ? 'bg-[#10B981]/15 text-[#10B981] border border-[#10B981]/30'
+                            ? 'bg-[#ECFDF5] text-[#37A970] border border-[#37A970]/30'
                             : isPending
-                            ? 'bg-[#F59E0B]/15 text-[#F59E0B] border border-[#F59E0B]/30'
-                            : 'bg-[#EF4444]/15 text-[#EF4444] border border-[#EF4444]/30'
+                            ? 'bg-[#FEF9EE] text-[#DBB452] border border-[#DBB452]/30'
+                            : 'bg-[#FEF1F1] text-[#DC5355] border border-[#DC5355]/30'
                         }`}
                       >
                         <span className="w-1.5 h-1.5 rounded-full bg-current" />
@@ -199,22 +199,22 @@ export function OrdersTab({ orders, loading, onRefresh }: OrdersTabProps) {
                           <button
                             onClick={() => handleStatusUpdate(order.order_id, 'Completed')}
                             disabled={processingId === order.order_id}
-                            className="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#49A367] to-[#58AE7A] hover:brightness-110 text-white text-xs font-bold shadow-md shadow-[#49A367]/30 transition-all disabled:opacity-50 flex items-center gap-1.5"
+                            className="px-3.5 py-1.5 rounded-full bg-[#340D73] hover:bg-[#250855] text-white text-xs font-bold shadow-sm shadow-[#340D73]/25 transition-all disabled:opacity-50 flex items-center gap-1.5"
                           >
-                            <CheckCircle2 className="w-3.5 h-3.5" />
+                            <CheckCircle2 className="w-3.5 h-3.5 text-[#37A970]" />
                             <span>Approve & Pay</span>
                           </button>
                           <button
                             onClick={() => handleStatusUpdate(order.order_id, 'Cancelled')}
                             disabled={processingId === order.order_id}
-                            className="px-3 py-1.5 rounded-full bg-[#EF4444]/15 hover:bg-[#EF4444]/25 text-[#EF4444] border border-[#EF4444]/30 text-xs font-bold transition-all disabled:opacity-50 flex items-center gap-1"
+                            className="px-3 py-1.5 rounded-full bg-[#FEF1F1] hover:bg-[#DC5355] text-[#DC5355] hover:text-white border border-[#DC5355]/30 text-xs font-bold transition-all disabled:opacity-50 flex items-center gap-1"
                           >
                             <XCircle className="w-3.5 h-3.5" />
                             <span>Reject</span>
                           </button>
                         </div>
                       ) : (
-                        <span className="text-xs text-[#A390C5] font-medium">Settled</span>
+                        <span className="text-xs text-[#768498] font-medium">Settled</span>
                       )}
                     </td>
                   </tr>

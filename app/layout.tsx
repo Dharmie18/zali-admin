@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import './globals.css';
 import { ToastProvider } from '@/context/ToastContext';
 
@@ -27,7 +27,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased selection:bg-[#6333F5] selection:text-white" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+      <body className="antialiased selection:bg-[#340D73] selection:text-white" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
         <ToastProvider>
           {children}
         </ToastProvider>

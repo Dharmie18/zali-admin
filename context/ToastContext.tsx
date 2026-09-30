@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { createContext, useContext, useState, useCallback } from 'react';
 import { CheckCircle2, AlertCircle, Info, X } from 'lucide-react';
@@ -38,23 +38,23 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
         {toasts.map((toast) => (
           <div
             key={toast.id}
-            className={`pointer-events-auto flex items-center justify-between gap-3 p-4 rounded-2xl border shadow-2xl backdrop-blur-xl transition-all duration-300 animate-slide-in ${
+            className={`pointer-events-auto flex items-center justify-between gap-3 p-4 rounded-2xl border shadow-xl backdrop-blur-xl transition-all duration-300 animate-slide-in ${
               toast.type === 'success'
-                ? 'bg-[#270949]/95 border-[#10B981]/40 text-white shadow-[#10B981]/10'
+                ? 'bg-white/95 border-[#37A970]/30 text-[#0B1C56] shadow-[#37A970]/10'
                 : toast.type === 'error'
-                ? 'bg-[#270949]/95 border-[#EF4444]/40 text-white shadow-[#EF4444]/10'
-                : 'bg-[#270949]/95 border-[#6333F5]/40 text-white shadow-[#6333F5]/10'
+                ? 'bg-white/95 border-[#DC5355]/30 text-[#0B1C56] shadow-[#DC5355]/10'
+                : 'bg-white/95 border-[#340D73]/30 text-[#0B1C56] shadow-[#340D73]/10'
             }`}
           >
             <div className="flex items-center gap-3">
-              {toast.type === 'success' && <CheckCircle2 className="w-5 h-5 text-[#10B981] shrink-0" />}
-              {toast.type === 'error' && <AlertCircle className="w-5 h-5 text-[#EF4444] shrink-0" />}
-              {toast.type === 'info' && <Info className="w-5 h-5 text-[#6333F5] shrink-0" />}
+              {toast.type === 'success' && <CheckCircle2 className="w-5 h-5 text-[#37A970] shrink-0" />}
+              {toast.type === 'error' && <AlertCircle className="w-5 h-5 text-[#DC5355] shrink-0" />}
+              {toast.type === 'info' && <Info className="w-5 h-5 text-[#340D73] shrink-0" />}
               <p className="text-sm font-semibold tracking-wide">{toast.message}</p>
             </div>
             <button
               onClick={() => removeToast(toast.id)}
-              className="text-[#A390C5] hover:text-white p-1 rounded-lg transition-colors"
+              className="text-[#768498] hover:text-[#0B1C56] p-1 rounded-lg transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
